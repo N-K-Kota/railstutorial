@@ -10,6 +10,7 @@ end
 gem 'rails', '~> 5.1.3'
 ruby '2.3.1'
 gem 'bcrypt', '~> 3.1.7'
+gem 'rails-controller-testing'
 # Use sqlite3 as the database for Active Record
 
 # Use Puma as the app server
