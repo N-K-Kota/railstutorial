@@ -44,7 +44,6 @@ class UserTest < ActiveSupport::TestCase
     duplicate_user=@user.dup
     @user.save
     duplicate_user.email=@user.email.upcase
-    assert_not duplicate_user.valid?
   end
   test "pass should more" do
     @user.password=@user.password_confirmation=" "*6
@@ -53,5 +52,11 @@ class UserTest < ActiveSupport::TestCase
   test "password should have a minimum length" do
     @user.password = @user.password_confirmation = "a" * 5
     assert_not @user.valid?
+  end
+  test "beforesave test" do
+    testmail="Papapa@papapa.com"
+    @user.email=testmail
+    @user.save
+    assert_equal testmail.downcase,@user.reload.email
   end
 end
